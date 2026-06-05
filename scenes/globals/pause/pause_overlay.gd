@@ -30,10 +30,10 @@ func toggle_pause() -> void:
 	Input.set_default_cursor_shape(Input.CURSOR_ARROW if new_state else Input.CURSOR_CROSS)
 
 	if new_state:
-		if not GameState.current_quest:
+		if not GameState.quest:
 			skip_tutorial_button.hide()
 			abandon_quest_button.hide()
-		elif GameState.current_quest.skippable:
+		elif GameState.quest.quest is LoreQuest and GameState.quest.quest.skippable:
 			skip_tutorial_button.show()
 			abandon_quest_button.hide()
 		else:
@@ -45,16 +45,25 @@ func toggle_pause() -> void:
 
 func _on_abandon_quest_pressed() -> void:
 	toggle_pause()
+
+	var abandon_scene := GameState.quest.abandon_scene_path
+	var abandon_spawn_point: NodePath
+	if abandon_scene:
+		abandon_spawn_point = GameState.quest.abandon_spawn_point
+	else:
+		abandon_scene = frays_end
+
 	GameState.abandon_quest()
 	SceneSwitcher.change_to_file_with_transition(
-		frays_end, ^"", Transition.Effect.FADE, Transition.Effect.FADE
+		abandon_scene, abandon_spawn_point, Transition.Effect.FADE, Transition.Effect.FADE
 	)
 
 
 func _on_skip_tutorial_pressed() -> void:
 	toggle_pause()
-	for ability: Enums.PlayerAbilities in GameState.current_quest.skip_abilities:
-		GameState.set_ability(ability, true)
+	var lq := GameState.quest.quest as LoreQuest
+	for ability: Enums.PlayerAbilities in lq.skip_abilities:
+		GameState.player.set_ability(ability, true)
 	GameState.mark_quest_completed()
 	SceneSwitcher.change_to_file_with_transition(
 		frays_end, ^"", Transition.Effect.FADE, Transition.Effect.FADE
