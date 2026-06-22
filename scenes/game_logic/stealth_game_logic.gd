@@ -15,8 +15,9 @@ func _ready() -> void:
 
 func _on_player_detected(player: Node2D) -> void:
 	if player.has_method("defeat"):
-		# player.defeat()  <-- COMENTADA PARA EVITAR EL ERROR
-		pass 
+		player.defeat()  # ✅ descomenta esta línea
+	elif player is StaticBody2D:
+		return  # ✅ ignora StaticBody2D (el Mago)
 	else:
 		push_warning("Detected node does not have defeat() method", player)
 

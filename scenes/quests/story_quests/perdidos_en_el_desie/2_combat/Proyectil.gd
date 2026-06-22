@@ -20,9 +20,16 @@ func _ready():
 
 func _process(delta):
 	if iniciado:
+		# ✅ Si el árbol ya no existe, eliminamos la bala silenciosamente
+		if not is_inside_tree():
+			return
 		global_position += direccion * velocidad * delta
 
 func _on_body_entered(body):
 	if body.name == "Player":
 		return
 	queue_free()
+
+func _exit_tree():
+	# ✅ Cuando la escena cambia, esto se llama automáticamente
+	pass
