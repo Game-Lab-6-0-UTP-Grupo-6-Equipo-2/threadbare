@@ -27,6 +27,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_a6n0j")
 next_scene = "uid://stdqc6ttomff"
+metadata/_edit_vertical_guides_ = [21.0]
 
 [node name="FabricBackground" type="NinePatchRect" parent="." unique_id=757888685]
 modulate = Color(0.345098, 0.215686, 0.929412, 1)

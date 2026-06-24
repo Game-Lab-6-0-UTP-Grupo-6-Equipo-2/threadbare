@@ -234,7 +234,7 @@ func _toggle_abilities() -> void:
 
 func _on_abilities_changed() -> void:
 	if mode != Mode.DEFEATED:
-		_toggle_abilities()
+		pass #
 
 
 ## Handles game over logic: restarts from the beginning of the current challenge

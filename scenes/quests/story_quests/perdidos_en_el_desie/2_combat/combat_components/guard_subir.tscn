@@ -1,0 +1,100 @@
+[gd_scene format=3 uid="uid://dbi6iwmwj17if"]
+
+[ext_resource type="PackedScene" uid="uid://cjac30gcb37av" path="res://scenes/quests/story_quests/perdidos_en_el_desie/2_combat/combat_components/guard.tscn" id="1_xqwl5"]
+[ext_resource type="SpriteFrames" uid="uid://8ttttqq7g18b" path="res://scenes/quests/story_quests/perdidos_en_el_desie/2_combat/combat_components/guardian_mini2_spriteframesNuevo.tres" id="2_xqwl5"]
+[ext_resource type="Texture2D" uid="uid://664o0xlokgwb" path="res://scenes/quests/story_quests/perdidos_en_el_desie/2_combat/GuardianMini2_2-frame0 (1).png" id="3_22qnc"]
+[ext_resource type="Texture2D" uid="uid://cayes3w52eoye" path="res://scenes/quests/story_quests/perdidos_en_el_desie/2_combat/GuardianMini2-caminar-vertical-subir(walk_up).png" id="4_ouokn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rkbqw"]
+atlas = ExtResource("3_22qnc")
+region = Rect2(0, 0, 187, 222)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pwr87"]
+atlas = ExtResource("3_22qnc")
+region = Rect2(0, 0, 187, 222)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nb2rr"]
+atlas = ExtResource("4_ouokn")
+region = Rect2(0, 0, 187, 222)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ndj6"]
+atlas = ExtResource("4_ouokn")
+region = Rect2(0, 222, 187, 222)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1nhvc"]
+atlas = ExtResource("4_ouokn")
+region = Rect2(0, 444, 187, 222)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_of70s"]
+atlas = ExtResource("4_ouokn")
+region = Rect2(0, 666, 187, 222)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yk6wx"]
+atlas = ExtResource("4_ouokn")
+region = Rect2(0, 888, 187, 222)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ct81e"]
+atlas = ExtResource("4_ouokn")
+region = Rect2(0, 1110, 187, 222)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ngnyd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rkbqw")
+}],
+"loop": true,
+"name": &"alerted",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pwr87")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nb2rr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ndj6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1nhvc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_of70s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yk6wx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ct81e")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[node name="Guard" unique_id=689832587 instance=ExtResource("1_xqwl5")]
+sprite_frames = ExtResource("2_xqwl5")
+
+[node name="DetectionArea" parent="." index="3" unique_id=885694991]
+rotation = 3.1707945
+
+[node name="Light" parent="DetectionArea" index="0" unique_id=366085581]
+texture_scale = 1.5
+
+[node name="CollisionPolygon2D" parent="DetectionArea" index="1" unique_id=1176393945]
+rotation = 1.5343868
+
+[node name="AnimatedSprite2D" parent="." index="4" unique_id=616054452]
+sprite_frames = SubResource("SpriteFrames_ngnyd")
